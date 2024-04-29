@@ -11,7 +11,11 @@ class IntroSliderScreen extends StatefulWidget {
 
 class IntroSliderScreenState extends State<IntroSliderScreen> {
   CarouselController buttonCarouselController = CarouselController();
-  List<int> list = [1, 2, 3];
+  List<Intro> list = [
+    Intro("Make payments safety and quickly with Queue Pro", "Make payments safety and quickly with Queue Pro"),
+    Intro("First and simple to make reservation and check in", "First and simple to make reservation and check in"),
+    Intro("Easily find CNG gas stations around you", "Easily find CNG gas stations around you"),
+  ];
   int _current = 0;
 
   @override
@@ -40,19 +44,21 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                 items: list
                     .map((item) =>
                     Container(
-                      width: 300,
+                      width: 320,
                       color: Colors.white,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                         Image.asset(
                           'assets/images/logo.png', color: Colors.red,
-                          width: 120.0,
-                          height: 120.0,
+                          width: 200.0,
+                          height: 200.0,
                           fit: BoxFit.fill,
                         ),
-
-                        Text("Item  $item"),
+                        const SizedBox(height: 30,),
+                        Text("${item.title}", style: const TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold)),
+                          const SizedBox(height: 10,),
+                          Text("${item.description}", style: const TextStyle(fontSize: 15, color: Colors.grey)),
                       ],)
 
                     ))
@@ -60,9 +66,9 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                 carouselController: buttonCarouselController,
                 options: CarouselOptions(
                   autoPlay: false,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.9,
-                  aspectRatio: 2.0,
+                  enlargeCenterPage: false,
+                  viewportFraction: 0.85,
+                  aspectRatio: 1.3,
                   initialPage: 0,
                   onPageChanged: (index, reason) {
                       setState(() {
@@ -130,4 +136,11 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
 
     );
   }
+}
+
+class Intro {
+  String? title;
+  String? description;
+  Intro(this.title, this.description);
+
 }
