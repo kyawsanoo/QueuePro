@@ -12,7 +12,7 @@ class IntroSliderScreen extends StatefulWidget {
 class IntroSliderScreenState extends State<IntroSliderScreen> {
   CarouselController buttonCarouselController = CarouselController();
   List<int> list = [1, 2, 3];
-
+  int _current = 0;
 
   @override
   void initState() {
@@ -63,10 +63,34 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                   enlargeCenterPage: true,
                   viewportFraction: 0.9,
                   aspectRatio: 2.0,
-                  initialPage: 1,
+                  initialPage: 0,
+                  onPageChanged: (index, reason) {
+                      setState(() {
+                      _current = index;
+                      });
+                  },
+
                 ),
               ),
               const SizedBox(height: 100,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:
+                list.asMap().entries.map((entry) {
+                    return Container(
+                      width: 20.0,
+                      height: 20.0,
+                      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: (Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black)
+                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                    );
+                }).toList(),
+              ),
+              const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -86,9 +110,14 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                   style: FilledButton.styleFrom(fixedSize: const Size(150, 35),
                       backgroundColor: Colors.blue),
                   onPressed: () {
-                    buttonCarouselController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.linear);
+                    if(_current==2){
+                      onSkipPress();
+
+                    }else {
+                      buttonCarouselController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.linear);
+                    }
                   },
                   child: const Text('Next', style: TextStyle(color: Colors.white),
                   ),
