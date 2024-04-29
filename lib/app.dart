@@ -1,9 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:queue_pro_app/complete_profile_screen.dart';
 import 'package:queue_pro_app/introslider_screen.dart';
 import 'package:queue_pro_app/login_screen.dart';
+import 'package:queue_pro_app/otp_screen.dart';
+import 'package:queue_pro_app/signup_screen.dart';
 import 'package:queue_pro_app/splash_screen.dart';
+import 'package:queue_pro_app/vehicle_info_screen.dart';
+import 'package:queue_pro_app/verification_screen.dart';
 
 import 'home_screen.dart';
 //import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -60,7 +65,12 @@ class AppState extends State<App> {
       routes: {
         '/': (context) => const SplashScreen(),
         '/intro_slider': (context) => const IntroSliderScreen(),
+        '/otp':(context) => const OtpScreen(),
+        '/verification':(context) => const VerificationScreen(),
+        '/complete_profile':(context) => const CompleteProfileScreen(),
+        '/vehicle_info':(context) => const VehicleInfoScreen(),
         '/login': (context) => const LoginScreen(),
+        "/signup": (context) => const SignupScreen(),
         '/home': (context) => const HomeScreen(),
       },
     );

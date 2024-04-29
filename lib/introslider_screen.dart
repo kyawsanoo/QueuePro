@@ -24,7 +24,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
   }
 
   void onSkipPress() {
-    Navigator.pushNamed(context, '/login');
+    Navigator.pushNamed(context, '/otp');
   }
 
   @override

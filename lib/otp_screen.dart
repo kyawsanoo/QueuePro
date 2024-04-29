@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class OtpScreen extends StatelessWidget {
+  const OtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               _header(context),
               _inputField(context),
-              _signup(context),
+
             ],
           ),
         ),
@@ -28,10 +28,10 @@ class LoginScreen extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          "Welcome Back",
+          "Hello there",
           style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
-        Text("Enter your credential to login"),
+        Text("Please enter your phone number. You will receive on OTP code for the verification process."),
       ],
     );
   }
@@ -53,37 +53,9 @@ class LoginScreen extends StatelessWidget {
               prefixIcon: const Icon(Icons.phone)),
         ),
         const SizedBox(height: 10),
-        TextField(
-          keyboardType: TextInputType.visiblePassword,
-          decoration: InputDecoration(
-            hintText: "Password",
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-                borderSide: BorderSide.none),
-            fillColor: Colors.purple.withOpacity(0.1),
-            filled: true,
-            prefixIcon: const Icon(Icons.lock),
-          ),
-          obscureText: true,
-        ),
-        const SizedBox(height: 10),
-        Row(
-
-          children: [
-          const SizedBox(width: 180,),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Forgot password?",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-
-        ],),
-        const SizedBox(height: 10),
-
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushNamed(context, '/verification');
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
@@ -91,7 +63,7 @@ class LoginScreen extends StatelessWidget {
             backgroundColor: Colors.blue,
           ),
           child: const Text(
-            "Login",
+            "Get OTP",
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
         )
@@ -99,19 +71,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-
-  _signup(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Don't have an account? "),
-        TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/signup');
-            },
-            child: const Text("Sign Up", style: TextStyle(color: Colors.blue),)
-        )
-      ],
-    );
-  }
 }

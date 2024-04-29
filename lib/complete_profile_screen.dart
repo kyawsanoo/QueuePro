@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class CompleteProfileScreen extends StatelessWidget {
+  const CompleteProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               _header(context),
               _inputField(context),
-              _signup(context),
+
             ],
           ),
         ),
@@ -28,10 +28,12 @@ class LoginScreen extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          "Welcome Back",
+          "Complete your profile",
           style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
-        Text("Enter your credential to login"),
+        Text("Don't worry only you can see your personal data. No one else will be able to see it."),
+        SizedBox(height: 50,),
+        Text("Please select your gender"),
       ],
     );
   }
@@ -40,23 +42,11 @@ class LoginScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        TextField(
-          keyboardType: TextInputType.phone,
-          decoration: InputDecoration(
-              hintText: "Phone Number",
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none
-              ),
-              fillColor: Colors.purple.withOpacity(0.1),
-              filled: true,
-              prefixIcon: const Icon(Icons.phone)),
-        ),
         const SizedBox(height: 10),
         TextField(
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-            hintText: "Password",
+            hintText: "Gender",
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
@@ -67,23 +57,10 @@ class LoginScreen extends StatelessWidget {
           obscureText: true,
         ),
         const SizedBox(height: 10),
-        Row(
-
-          children: [
-          const SizedBox(width: 180,),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Forgot password?",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-
-        ],),
-        const SizedBox(height: 10),
 
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushNamed(context, '/vehicle_info');
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
@@ -91,7 +68,7 @@ class LoginScreen extends StatelessWidget {
             backgroundColor: Colors.blue,
           ),
           child: const Text(
-            "Login",
+            "Add this Vehicle",
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
         )
@@ -100,18 +77,5 @@ class LoginScreen extends StatelessWidget {
   }
 
 
-  _signup(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Don't have an account? "),
-        TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/signup');
-            },
-            child: const Text("Sign Up", style: TextStyle(color: Colors.blue),)
-        )
-      ],
-    );
-  }
+
 }
