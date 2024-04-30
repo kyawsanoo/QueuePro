@@ -2,16 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:queue_pro_app/complete_profile_screen.dart';
-import 'package:queue_pro_app/introslider_screen.dart';
-import 'package:queue_pro_app/login_screen.dart';
-import 'package:queue_pro_app/otp_screen.dart';
-import 'package:queue_pro_app/signup_screen.dart';
-import 'package:queue_pro_app/splash_screen.dart';
-import 'package:queue_pro_app/vehicle_info_screen.dart';
-import 'package:queue_pro_app/verification_screen.dart';
-
-import 'home_screen.dart';
+import 'package:queue_pro_app/screens/complete_profile_screen.dart';
+import 'package:queue_pro_app/screens/home_screen.dart';
+import 'package:queue_pro_app/screens/introslider_screen.dart';
+import 'package:queue_pro_app/screens/login_screen.dart';
+import 'package:queue_pro_app/screens/otp_screen.dart';
+import 'package:queue_pro_app/screens/signup_screen.dart';
+import 'package:queue_pro_app/screens/splash_screen.dart';
+import 'package:queue_pro_app/screens/vehicle_info_screen.dart';
+import 'package:queue_pro_app/screens/verification_screen.dart';
 //import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class App extends StatefulWidget {
