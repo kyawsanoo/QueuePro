@@ -30,10 +30,18 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(context.tr('language'), style: Theme.of(context).textTheme.titleSmall),
               IconButton(
                 icon: const Icon(Icons.language_outlined),
-                tooltip: 'English',
                 onPressed: () {
+                  bool isEng = context.locale == const Locale('en', 'US');
+
                   setState(() {
-                    context.setLocale(const Locale('en'));
+
+                    if(isEng) {
+                      context.setLocale(const Locale('my', 'MM'));
+                    }
+                    else {
+                      context.setLocale(const Locale('en', 'US'));
+                    }
+                    debugPrint("language changed");
                   });
 
                 },
@@ -70,7 +78,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/intro_slider');
+      //Navigator.pushNamed(context, '/intro_slider');
+      Navigator.pushNamedAndRemoveUntil(context, "/intro_slider", (r) => false);
+
     });
 
   }

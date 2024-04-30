@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 
@@ -34,6 +35,34 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           //title: Text("Home", style: Theme.of(context).textTheme.headlineLarge),
+           title: Column(children: [
+              const SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(context.tr('language'), style: Theme.of(context).textTheme.titleSmall),
+                  IconButton(
+                    icon: const Icon(Icons.language_outlined),
+                    onPressed: () {
+                      bool isEng = context.locale == const Locale('en', 'US');
+
+                      setState(() {
+
+                        if(isEng) {
+                          context.setLocale(const Locale('my', 'MM'));
+                        }
+                        else {
+                          context.setLocale(const Locale('en', 'US'));
+                        }
+                        debugPrint("language changed");
+                      });
+
+                    },
+                  ),
+
+                ],)
+            ],)
         ),
         body:
 
@@ -109,7 +138,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                         borderRadius: BorderRadius.circular(32.0),
                       ),
                     ),
-                    child: const Text('Skip', style: TextStyle(color: Colors.blue)),
+                    child: Text(context.tr('skip'), style: TextStyle(color: Colors.blue)),
                   ),
                 const SizedBox(width: 20,),
                 FilledButton(
@@ -125,7 +154,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                           curve: Curves.linear);
                     }
                   },
-                  child: const Text('Next', style: TextStyle(color: Colors.white),
+                  child: Text(context.tr('next'), style: const TextStyle(color: Colors.white),
                   ),
                 )
 

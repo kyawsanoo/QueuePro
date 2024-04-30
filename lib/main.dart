@@ -13,7 +13,8 @@ Future<void> main() async {
       supportedLocales: const [Locale('en', 'US'), Locale('my', 'MM')],
       path: 'assets/translations', // <-- change the path of the translation files
       fallbackLocale: const Locale('en'),
-      //startLocale: true,
+      saveLocale: true,
+      //startLocale: const Locale('en', 'US'),
       child: const App()
   ),);
   configLoading();
