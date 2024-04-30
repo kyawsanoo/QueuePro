@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:queue_pro_app/complete_profile_screen.dart';
 import 'package:queue_pro_app/introslider_screen.dart';
@@ -59,6 +60,7 @@ class AppState extends State<App> {
           bodyMedium: GoogleFonts.merriweather(),
 
         ),
+
       ),
 
       initialRoute: '/',
@@ -73,6 +75,7 @@ class AppState extends State<App> {
         "/signup": (context) => const SignupScreen(),
         '/home': (context) => const HomeScreen(),
       },
+      builder: EasyLoading.init(),
     );
   }
 }

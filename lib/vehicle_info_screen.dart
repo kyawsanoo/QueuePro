@@ -1,9 +1,19 @@
 
 import 'package:flutter/material.dart';
+import 'package:queue_pro_app/helpers/loading_functions.dart';
 
-class VehicleInfoScreen extends StatelessWidget {
+class VehicleInfoScreen extends StatefulWidget {
   const VehicleInfoScreen({super.key});
 
+  @override
+  State<VehicleInfoScreen> createState() {
+    return _VehicleInfoScreenState();
+  }
+
+
+}
+
+class _VehicleInfoScreenState extends State<VehicleInfoScreen> with LoadingFunctions{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -100,7 +110,7 @@ class VehicleInfoScreen extends StatelessWidget {
 
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/home');
+                        _onContinued(context);
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
@@ -122,4 +132,15 @@ class VehicleInfoScreen extends StatelessWidget {
       ),
     );
   }
+
+  _onContinued(context) async{
+
+      showLoading();
+      await Future.delayed(const Duration(seconds: 2));
+      showLoadingSuccess();
+      await Future.delayed(const Duration(seconds: 2));
+      Navigator.pushNamed(context, '/home');
+
+  }
+
 }

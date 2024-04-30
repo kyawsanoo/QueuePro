@@ -1,8 +1,24 @@
 
 import 'package:flutter/material.dart';
+import 'package:queue_pro_app/helpers/loading_functions.dart';
 
-class OtpScreen extends StatelessWidget {
+class OtpScreen extends StatefulWidget{
   const OtpScreen({super.key});
+
+  @override
+  State<OtpScreen> createState()  => _OtpScreenState();
+
+}
+
+class _OtpScreenState extends State<OtpScreen> with LoadingFunctions{
+  TextEditingController _phoneInputController = TextEditingController();
+
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneInputController.text = "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +40,7 @@ class OtpScreen extends StatelessWidget {
     );
   }
 
+
   _header(context) {
     return const Column(
       children: [
@@ -42,6 +59,7 @@ class OtpScreen extends StatelessWidget {
       children: [
         TextField(
           keyboardType: TextInputType.phone,
+          controller: _phoneInputController,
           decoration: InputDecoration(
               hintText: "Phone Number",
               border: OutlineInputBorder(
@@ -55,7 +73,7 @@ class OtpScreen extends StatelessWidget {
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/verification');
+            _getOTPPressed(context);
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
@@ -70,5 +88,18 @@ class OtpScreen extends StatelessWidget {
       ],
     );
   }
+
+  _getOTPPressed(context) async{
+    if(_phoneInputController.text.isEmpty) {
+        showLoadingError("Please enter phone number.");
+    }else {
+      showLoading();
+      await Future.delayed(const Duration(seconds: 2));
+      showLoadingSuccess();
+      await Future.delayed(const Duration(seconds: 2));
+      Navigator.pushNamed(context, '/verification');
+    }
+  }
+
 
 }
