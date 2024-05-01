@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 //adimport 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'app/app.dart';
+import 'generated/codegen_loader.g.dart';
+
 
 Future<void> main() async {
   //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -10,11 +12,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp( EasyLocalization(
-      supportedLocales: const [Locale('en', 'US'), Locale('my', 'MM')],
-      path: 'assets/translations', // <-- change the path of the translation files
+      supportedLocales: const [Locale('en'), Locale('my')],
+      path: 'assets/translations',
+      //path: 'resources/translations',//source dir
       fallbackLocale: const Locale('en'),
       saveLocale: true,
-      //startLocale: const Locale('en', 'US'),
+      assetLoader: const CodegenLoader(),
+      // flutter pub run easy_localization:generate --source-dir ./assets/translations
+      //  flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart --source-dir ./assets/translations
       child: const App()
   ),);
   configLoading();

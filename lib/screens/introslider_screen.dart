@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../generated/locale_keys.g.dart';
+
 
 class IntroSliderScreen extends StatefulWidget {
   const IntroSliderScreen({super.key});
@@ -45,16 +47,16 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                   IconButton(
                     icon: const Icon(Icons.language_outlined),
                     onPressed: () {
-                      bool isEng = context.locale == const Locale('en', 'US');
+                      bool isEng = context.locale == const Locale('en');
+                      if(isEng) {
+                        context.setLocale(const Locale('my'));
+                      }
+                      else {
+                        context.setLocale(const Locale('en'));
+                      }
 
                       setState(() {
 
-                        if(isEng) {
-                          context.setLocale(const Locale('my', 'MM'));
-                        }
-                        else {
-                          context.setLocale(const Locale('en', 'US'));
-                        }
                         debugPrint("language changed");
                       });
 
@@ -138,7 +140,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                         borderRadius: BorderRadius.circular(32.0),
                       ),
                     ),
-                    child: Text(context.tr('skip'), style: TextStyle(color: Colors.blue)),
+                    child: Text(LocaleKeys.skip.tr(), style: const TextStyle(color: Colors.blue)),
                   ),
                 const SizedBox(width: 20,),
                 FilledButton(
@@ -154,7 +156,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                           curve: Curves.linear);
                     }
                   },
-                  child: Text(context.tr('next'), style: const TextStyle(color: Colors.white),
+                  child: Text(LocaleKeys.next.tr(), style: const TextStyle(color: Colors.white),
                   ),
                 )
 

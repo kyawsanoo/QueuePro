@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import '../generated/locale_keys.g.dart';
 
 
 
@@ -27,20 +28,20 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(context.tr('language'), style: Theme.of(context).textTheme.titleSmall),
+              Text(LocaleKeys.language.tr(), style: Theme.of(context).textTheme.titleSmall),
               IconButton(
                 icon: const Icon(Icons.language_outlined),
                 onPressed: () {
-                  bool isEng = context.locale == const Locale('en', 'US');
+                  bool isEng = context.locale == const Locale('en');
+                  if(isEng) {
+                    context.setLocale(const Locale('my'));
+                  }
+                  else {
+                    context.setLocale(const Locale('en'));
+                  }
 
                   setState(() {
 
-                    if(isEng) {
-                      context.setLocale(const Locale('my', 'MM'));
-                    }
-                    else {
-                      context.setLocale(const Locale('en', 'US'));
-                    }
                     debugPrint("language changed");
                   });
 
@@ -64,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 20,),
             Text(
-                context.tr('title'),
+                LocaleKeys.title.tr(),
                 style: Theme.of(context).textTheme.displayLarge
             ),
           ],
