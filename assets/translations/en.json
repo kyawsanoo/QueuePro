@@ -3,5 +3,6 @@
   "welcome": "Hello",
   "language": "Language",
   "skip": "Skip",
-  "next": "Next"
+  "next": "Next",
+  "go": "Go"
 }

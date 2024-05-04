@@ -64,8 +64,8 @@ class AppState extends State<App> {
 
       initialRoute: '/',
       routes: {
-        '/': (context) => const SplashScreen(),
-        '/intro_slider': (context) => const IntroSliderScreen(),
+        //'/intro_slider': (context) => const SplashScreen(),
+        '/': (context) => const IntroSliderScreen(),
         '/otp':(context) => const OtpScreen(),
         '/verification':(context) => const VerificationScreen(),
         '/complete_profile':(context) => const CompleteProfileScreen(),

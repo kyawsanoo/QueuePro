@@ -15,19 +15,25 @@ class IntroSliderScreen extends StatefulWidget {
 class IntroSliderScreenState extends State<IntroSliderScreen> {
   CarouselController buttonCarouselController = CarouselController();
   List<Intro> list = [
-    Intro("Make payments safety and quickly with Queue Pro", "Make payments safety and quickly with Queue Pro"),
-    Intro("First and simple to make reservation and check in", "First and simple to make reservation and check in"),
-    Intro("Easily find CNG gas stations around you", "Easily find CNG gas stations around you"),
+    Intro("Make payments safety and quickly with Queue Pro", "Make payments safety and quickly with Queue Pro", "assets/images/intro_slide_1.jpg"),
+    Intro("First and simple to make reservation and check in", "First and simple to make reservation and check in", "assets/images/intro_slide_2.jpg"),
+    Intro("Easily find CNG gas stations around you", "Easily find CNG gas stations around you", "assets/images/intro_slide_3.jpg"),
   ];
   int _current = 0;
 
   @override
   void initState() {
     super.initState();
+    _current = 0;
   }
 
   void onSkipPress() {
+    onDonePress();
+  }
+
+  void onDonePress() {
     Navigator.pushNamed(context, '/otp');
+
   }
 
   @override
@@ -67,103 +73,150 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
             ],)
         ),
         body:
+                      Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/intro_slide_bg.jpg"),
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                Colors.yellow.withOpacity(0.9),
+                                BlendMode.dstATop,
+                              ),
 
-        Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              CarouselSlider(
-                items: list
-                    .map((item) =>
-                    Container(
-                      width: 320,
-                      color: Colors.white,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                        Image.asset(
-                          'assets/images/logo.png', color: Colors.red,
-                          width: 200.0,
-                          height: 200.0,
-                          fit: BoxFit.fill,
-                        ),
-                        const SizedBox(height: 30,),
-                        Text("${item.title}", style: const TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold)),
-                          const SizedBox(height: 10,),
-                          Text("${item.description}", style: const TextStyle(fontSize: 15, color: Colors.grey)),
-                      ],)
+                            ),
 
-                    ))
-                    .toList(),
-                carouselController: buttonCarouselController,
-                options: CarouselOptions(
-                  autoPlay: false,
-                  enlargeCenterPage: false,
-                  viewportFraction: 0.85,
-                  aspectRatio: 1.3,
-                  initialPage: 0,
-                  onPageChanged: (index, reason) {
-                      setState(() {
-                      _current = index;
-                      });
-                  },
+                          ),
+                          margin: EdgeInsets.only(top: 20),
+                          child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          //mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            CarouselSlider(
+                              items: list
+                                  .map((item) =>
+                                  Container(
+                                      padding: EdgeInsets.only(top:10, bottom: 10, left: 10, right: 10),
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: Colors.transparent),
+                                      child:
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            padding:EdgeInsets.all(10),
+                                            //width: MediaQuery.sizeOf(context).width,
+                                            height: 280,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Colors.grey,
+                                                ),
+                                                borderRadius: BorderRadius.all(Radius.circular(20))
+                                            ),
+                                            child:Image.asset(
+                                              item.img!,
+                                              fit: BoxFit.fill,
+                                            ),),
 
-                ),
-              ),
-              const SizedBox(height: 100,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:
-                list.asMap().entries.map((entry) {
-                    return Container(
-                      width: 20.0,
-                      height: 20.0,
-                      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : Colors.black)
-                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                    );
-                }).toList(),
-              ),
-              const SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  OutlinedButton(
-                    onPressed: () {onSkipPress();},
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(150, 35),
-                      side: const BorderSide(width: 2.0, color: Colors.blue),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
+
+                                          const SizedBox(height: 20,),
+                                          Text("${item.title}", style: const TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold)),
+
+                                          const SizedBox(height: 10,),
+                                          Text("${item.description}", style: const TextStyle(fontSize: 18, color: Colors.grey)),
+
+                                          const SizedBox(height: 20,),
+                                          Text("${item.title}", style: const TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold)),
+
+                                          const SizedBox(height: 10,),
+                                          Text("${item.description}", style: const TextStyle(fontSize: 18, color: Colors.grey)),
+
+                                        ],)
+
+                                  ))
+                                  .toList(),
+                              carouselController: buttonCarouselController,
+                              options: CarouselOptions(
+                                height: 700,
+                                aspectRatio: 16/9,
+                                viewportFraction: 1,
+                                //viewportFraction: 0.8,
+                                initialPage: 0,
+                                autoPlay: false,
+                                enlargeCenterPage: false,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    _current = index;
+                                  });
+                                },
+
+                              ),
+                            ),
+
+                            const SizedBox(height: 20,),
+                            Expanded(child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:
+                              list.asMap().entries.map((entry) {
+                                return Container(
+                                  width: 10.0,
+                                  height: 10.0,
+                                  margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: (Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.white
+                                          : Colors.cyan)
+                                          .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                                );
+                              }).toList(),
+                            ),),
+
+
+                            const SizedBox(height: 20,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                OutlinedButton(
+                                  onPressed: () {onSkipPress();},
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(150, 35),
+                                    side: const BorderSide(width: 2.0, color: Colors.blue),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(32.0),
+                                    ),
+                                  ),
+                                  child: Text(LocaleKeys.skip.tr(), style: const TextStyle(color: Colors.blue)),
+                                ),
+                                const SizedBox(width: 20,),
+                                FilledButton(
+                                  style: FilledButton.styleFrom(fixedSize: const Size(150, 35),
+                                      backgroundColor: Colors.blue),
+                                  onPressed: () {
+                                    if(_current==2){
+                                      onDonePress();
+                                    }
+                                    else {
+                                      buttonCarouselController.nextPage(
+                                          duration: Duration(milliseconds: 300), curve: Curves.linear);
+                                    }
+                                  },
+                                  child: Text(LocaleKeys.next, style: const TextStyle(color: Colors.white),
+                                  ),
+                                )
+
+                              ],),
+
+
+
+                          ]
+                      )
                       ),
-                    ),
-                    child: Text(LocaleKeys.skip.tr(), style: const TextStyle(color: Colors.blue)),
-                  ),
-                const SizedBox(width: 20,),
-                FilledButton(
-                  style: FilledButton.styleFrom(fixedSize: const Size(150, 35),
-                      backgroundColor: Colors.blue),
-                  onPressed: () {
-                    if(_current==2){
-                      onSkipPress();
 
-                    }else {
-                      buttonCarouselController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.linear);
-                    }
-                  },
-                  child: Text(LocaleKeys.next.tr(), style: const TextStyle(color: Colors.white),
-                  ),
-                )
 
-                ],),
-
-            ]
-        )
 
     );
   }
@@ -172,6 +225,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
 class Intro {
   String? title;
   String? description;
-  Intro(this.title, this.description);
+  String? img;
+  Intro(this.title, this.description, this.img);
 
 }
