@@ -52,7 +52,7 @@ class AppState extends State<App> {
             fontWeight: FontWeight.normal,
           ),
           titleSmall: GoogleFonts.oswald(
-            color: Colors.blue,
+            color: Colors.white,
             fontSize: 14,
             fontStyle: FontStyle.normal,
           ),
