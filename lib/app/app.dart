@@ -42,17 +42,17 @@ class AppState extends State<App> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
         textTheme: TextTheme(
           displaySmall: GoogleFonts.pacifico(),
           displayLarge: const TextStyle(
-            color: Colors.red,
+            color: Colors.black,
             fontSize: 25,
             fontWeight: FontWeight.normal,
           ),
           titleSmall: GoogleFonts.oswald(
-            color: Colors.white,
+            color: Colors.black38,
             fontSize: 14,
             fontStyle: FontStyle.normal,
           ),

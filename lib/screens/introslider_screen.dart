@@ -42,7 +42,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           //title: Text("Home", style: Theme.of(context).textTheme.headlineLarge),
            title: Column(children: [
               const SizedBox(height: 20,),
