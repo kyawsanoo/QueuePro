@@ -69,7 +69,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
 
                     },
                   ),
-                  SizedBox(width: 10,)
+                  const SizedBox(width: 10,)
 
                 ],)
             ],)
@@ -78,7 +78,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
             Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/intro_slide_bg.jpg"),
+                    image: const AssetImage("assets/images/intro_slide_bg.jpg"),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Colors.white.withOpacity(0.8),
@@ -88,7 +88,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                   ),
 
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 //margin: EdgeInsets.only(top: 20),
                 child:
                 Column(
@@ -103,7 +103,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                                   border: Border.all(
                                     color: Colors.grey,
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
                               ),
                                 child:
                                 Column(
@@ -114,24 +114,27 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                                     Expanded(flex: 4, child: Container(
                                       //color:Colors.yellow,
 
-                                      child:
-                                      Center(child:Image.asset(
+                                  child:
+                                      /*Center(child:Image.asset(
                                         item.img!,
                                         fit: BoxFit.fill,
-                                      ),),)
-
-                                    ),
-                                    SizedBox(height: 10,),
+                                      ),)*/
+                                      FittedBox(
+                                        fit: BoxFit.fill,
+                                        child: Image.asset(item.img!),
+                                      )
+                                    )),
+                                    const SizedBox(height: 10,),
 
                                     Expanded(
                                       flex: 2,
                                       child: Container(
                                       color: Colors.transparent,
-                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                                       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
                                       mainAxisAlignment: MainAxisAlignment.center, children: [
                                          Expanded(flex:2, child:
-                                        Container(padding: EdgeInsets.all(5),
+                                        Container(padding: const EdgeInsets.all(5),
                                           /*color: Colors.green,*/child: Center(child:Text("${item.title}", style: const TextStyle(fontSize: 22, color: Colors.blue, fontWeight: FontWeight.bold)),),)),
 
                                       Expanded(flex: 1, child:Container(padding: EdgeInsets.all(5), /*color: Colors.red,*/
@@ -163,7 +166,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                         ),
                       ),
                       )),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Expanded(
 
                         child:
@@ -186,7 +189,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                           );
                         }).toList(),
                       ),),),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Expanded(
                           child:
                           Container(
@@ -195,7 +198,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Spacer(),
+                              const Spacer(),
 
                               Expanded(flex:2, child: OutlinedButton(
                                 onPressed: () {onSkipPress();},
@@ -209,7 +212,7 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                                 child: Text(LocaleKeys.skip.tr(), style: const TextStyle(color: Colors.blue)),
                               ),
                               ),
-                              SizedBox(width: 10,),
+                              const SizedBox(width: 10,),
                               Expanded(flex:2, child: FilledButton(
                                 style: FilledButton.styleFrom(fixedSize: const Size(150, 45),
                                     backgroundColor: Colors.blue),
@@ -219,14 +222,14 @@ class IntroSliderScreenState extends State<IntroSliderScreen> {
                                   }
                                   else {
                                     buttonCarouselController.nextPage(
-                                        duration: Duration(milliseconds: 300), curve: Curves.linear);
+                                        duration: const Duration(milliseconds: 300), curve: Curves.linear);
                                   }
                                 },
-                                child: Text(LocaleKeys.next, style: const TextStyle(color: Colors.white),
+                                child: Text(LocaleKeys.next.tr(), style: TextStyle(color: Colors.white),
                                 ),
                               )
                               ),
-                              Spacer(),
+                              const Spacer(),
 
 
                             ],), )
