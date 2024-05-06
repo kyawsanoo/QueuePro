@@ -6,5 +6,6 @@ abstract class  LocaleKeys {
   static const language = 'language';
   static const skip = 'skip';
   static const next = 'next';
+  static const go = 'go';
 
 }

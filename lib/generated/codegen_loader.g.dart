@@ -19,14 +19,16 @@ class CodegenLoader extends AssetLoader{
   "welcome": "Hello",
   "language": "Language",
   "skip": "Skip",
-  "next": "Next"
+  "next": "Next",
+  "done": "Done"
 };
 static const Map<String,dynamic> my = {
   "title": "Queue Pro",
   "welcome": "ပြည်တောင်စုနယ်မြေ",
   "language": "Language",
   "skip": "ကျော်ပါ",
-  "next": "ဆက်သွားပါ"
+  "next": "ဆက်သွားပါ",
+  "done": "Done"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "my": my};
 }

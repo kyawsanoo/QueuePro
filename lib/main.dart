@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-//adimport 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'app/app.dart';
 import 'generated/codegen_loader.g.dart';
 
 
 Future<void> main() async {
-  //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  //FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  //WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp( EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('my')],
@@ -18,10 +18,9 @@ Future<void> main() async {
       fallbackLocale: const Locale('en'),
       saveLocale: true,
       assetLoader: const CodegenLoader(),
-      // flutter pub run easy_localization:generate --source-dir ./assets/translations
-      //  flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart --source-dir ./assets/translations
       child: const App()
   ),);
+  FlutterNativeSplash.remove();
   configLoading();
 }
 
@@ -40,6 +39,7 @@ void configLoading() {
     ..userInteractions = true
     ..dismissOnTap = false
     /*..customAnimation = CustomAnimation()*/;
+
 }
 
 

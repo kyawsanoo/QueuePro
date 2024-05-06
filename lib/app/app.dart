@@ -52,7 +52,7 @@ class AppState extends State<App> {
             fontWeight: FontWeight.normal,
           ),
           titleSmall: GoogleFonts.oswald(
-            color: Colors.blue,
+            color: Colors.white,
             fontSize: 14,
             fontStyle: FontStyle.normal,
           ),
@@ -64,8 +64,8 @@ class AppState extends State<App> {
 
       initialRoute: '/',
       routes: {
-        '/': (context) => const SplashScreen(),
-        '/intro_slider': (context) => const IntroSliderScreen(),
+        //'/intro_slider': (context) => const SplashScreen(),
+        '/': (context) => const IntroSliderScreen(),
         '/otp':(context) => const OtpScreen(),
         '/verification':(context) => const VerificationScreen(),
         '/complete_profile':(context) => const CompleteProfileScreen(),
